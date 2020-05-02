@@ -8,8 +8,13 @@
     "start": "next start"
   },
   "dependencies": {
-    "next": "9.2.1",
+    "autoprefixer": "^9.7.6",
+    "next": "^9.3.6",
+    "node-fetch": "^2.6.0",
     "react": "16.12.0",
-    "react-dom": "16.12.0"
+    "react-dom": "16.12.0",
+    "react-query": "^1.3.0",
+    "swr": "^0.1.16",
+    "unfetch": "^4.1.0"
   }
 }
