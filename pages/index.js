@@ -139,7 +139,8 @@ const Home = ({ json }) => {
           font-size: 14px;
           font-weight: 600;
           cursor: pointer;
-          margin: 0 20px; 
+          margin: 0 20px;
+          background-color: #fff;
         }
         .button:disabled {
           cursor: not-allowed;
