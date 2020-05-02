@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Head from 'next/head'
 import Nav from '../components/nav'
-// import fetch from 'unfetch'
-import useSWR from 'swr'
 import Link from 'next/link'
 import fetch from 'node-fetch'
 import { useInfiniteQuery, useQuery, usePaginatedQuery, queryCache } from 'react-query'
@@ -106,7 +104,7 @@ const Home = ({ json }) => {
           border: none;
         }
         .card {
-          padding: 28px 28px 30px;
+          padding: 40px 40px 45px;
           text-align: left;
           text-decoration: none;
           color: #ffffff;
