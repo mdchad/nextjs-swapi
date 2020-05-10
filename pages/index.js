@@ -3,12 +3,15 @@ import Head from 'next/head'
 import Nav from '../components/nav'
 import Link from 'next/link'
 import fetch from 'node-fetch'
+import { useRouter } from 'next/router'
 import { useInfiniteQuery, useQuery, usePaginatedQuery, queryCache } from 'react-query'
 
 const API_URL = 'https://swapi.dev'
 
 const Home = ({ json }) => {
   const [page, setPage] = React.useState(1)
+  const router = useRouter()
+
   const fetchProjects = React.useCallback(async (key, page = 1) => {
     const res = await fetch(API_URL + '/api/vehicles/?page=' + page)
     const json = await res.json()
@@ -41,6 +44,14 @@ const Home = ({ json }) => {
     return <span>Error: {error.message}</span>
   }
 
+  const handleClick = (e, value) => {
+    e.preventDefault()
+    router.push({
+      pathname: '/vehicles/' + value.id,
+      query: value,
+    })
+  }
+
   return (
     <div>
       <Head>
@@ -52,8 +63,9 @@ const Home = ({ json }) => {
         <h1 className="title">SWAPI</h1>
         <div className="row">
           { resolvedData.results.map((value, i) => {
+            const id = value.url.split('/').filter(val => Boolean(val))
             return (
-              <Link href={'#'} key={i} >
+              <Link href="vehicles/[id]" as={`vehicles/${id[id.length - 1]}`} key={i}>
                 <div className="card">
                   <h1>{value.name}</h1>
                   <p>{value.manufacturer}</p>
